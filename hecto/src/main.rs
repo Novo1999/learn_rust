@@ -23,13 +23,13 @@ fn main() {
     println!("first float - {}, second float - {} ", f1, f2);
 
     // by default immutable
-    let mut _name = "Novodip"; // mutable with mut keyword
+    let mut _name: &str = "Novodip"; // mutable with mut keyword
 
     _name  = "Sam";
 
     // re-declarable in current scope
-    let _x = "test";
-    let x = "test2";
+    let _x: &str = "test";
+    let x: &str = "test2";
 
     println!("{}", x);
     
@@ -44,7 +44,45 @@ fn main() {
         println!("{} is a singer", _name);
     }
 
-    let g = 3.99;
+    let g = 147;
     let h = g as i32;
     println!("g is {}, h is {}", g, h);
+
+    let v: Vec<i32> = vec![10, 20, 30]; // every value has a single owner
+
+    let v: &Vec<i32> = &v;
+    // print_vector(&v); // ownership of the vector passed
+
+    println!("{}", v[0]);
+
+    let num = String::from("12345");
+    println!("{}" , num);
+    
+    // flow control
+
+    let age = 34;
+
+    let message = if age > 33 {"age is more than 33"} else {"age is less than 33"};
+
+    println!("{}", message);
+
+    // match
+    let num = 100;
+
+    // match num {
+    //     100 => println!("hundred"),
+    //     200 => println!("Two hundred"),
+    //     _ => println!("Who cares") // default case
+    // }
+
+    match num {
+        25..=50 => println!("25 to 50"),
+        51..=100 => println!("50 to 100"),
+        _ => println!("Who cares")
+    }
+
 }
+
+// fn print_vector(x: Vec<i32>) { // vector passed as parameter here
+//     println!("inside function {:?}", x)
+// }
